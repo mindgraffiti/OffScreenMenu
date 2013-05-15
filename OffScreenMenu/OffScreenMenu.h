@@ -10,14 +10,9 @@
 // custom protocol
 // if an object inherits from this protocol, it's expected to have this method.
 @protocol OffScreenMenuDelegate <NSObject>
-- (void)openCloseTriggered:(BOOL)openClosed;
 @end
 
-@interface OffScreenMenu : UIView {
-    BOOL menuIsOpen;
-}
+@interface OffScreenMenu : UIView
 @property (assign, nonatomic) id <OffScreenMenuDelegate> delegate;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tabTap;
-
 @end
 

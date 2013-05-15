@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "OffScreenMenu.h"
-@interface ViewController : UIViewController <OffScreenMenuDelegate>
+#import "OffScreenMenuTab.h"
+@interface ViewController : UIViewController <OffScreenMenuDelegate, OffScreenMenuTabDelegate>
 @property (strong, nonatomic) IBOutlet OffScreenMenu *osMenu;
+@property (strong, nonatomic) IBOutlet OffScreenMenuTab *osTab;
 @end

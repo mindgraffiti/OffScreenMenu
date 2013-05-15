@@ -18,7 +18,6 @@
         NSArray *screens = [[NSBundle mainBundle] loadNibNamed:@"OffScreenMenu" owner:self options:nil];
         // Take the first view and add it as a subView of this view.
         [self addSubview:(OffScreenMenu *)[screens objectAtIndex:0]];
-        menuIsOpen = NO;
     }
     return self;
 }
@@ -30,27 +29,11 @@
     if (self) {
         NSArray *screens = [[NSBundle mainBundle] loadNibNamed:@"OffScreenMenu" owner:self options:nil];
         [self addSubview:(OffScreenMenu *)[screens objectAtIndex:0]];
-        menuIsOpen = NO;
     }
     return self;
 }
 
-- (IBAction)openCloseMenu:(id)sender{
-    // do I  have a delegate?
-    if (self.delegate) {
-        // does it respond when triggered?
-        if ([self.delegate respondsToSelector:@selector(openCloseTriggered:)]) {
-            // ok then, do something.
-            if (menuIsOpen == YES) {
-                menuIsOpen = NO;
-            } else {
-                menuIsOpen = YES;
-            }
-            // The main view, ViewController.nib, is receiving this.
-            [self.delegate openCloseTriggered:menuIsOpen];
-        }
-    }
-}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
