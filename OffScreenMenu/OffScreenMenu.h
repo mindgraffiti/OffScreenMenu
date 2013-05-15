@@ -13,7 +13,9 @@
 - (void)openCloseTriggered:(BOOL)openClosed;
 @end
 
-@interface OffScreenMenu : UIView
+@interface OffScreenMenu : UIView {
+    BOOL menuIsOpen;
+}
 @property (assign, nonatomic) id <OffScreenMenuDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tabTap;
 

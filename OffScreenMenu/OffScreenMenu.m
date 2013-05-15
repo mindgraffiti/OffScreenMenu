@@ -18,6 +18,7 @@
         NSArray *screens = [[NSBundle mainBundle] loadNibNamed:@"OffScreenMenu" owner:self options:nil];
         // Take the first view and add it as a subView of this view.
         [self addSubview:(OffScreenMenu *)[screens objectAtIndex:0]];
+        menuIsOpen = NO;
     }
     return self;
 }
@@ -28,7 +29,8 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         NSArray *screens = [[NSBundle mainBundle] loadNibNamed:@"OffScreenMenu" owner:self options:nil];
-        [self addSubview:(OffScreenMenu *)[screens objectAtIndex:0]];        
+        [self addSubview:(OffScreenMenu *)[screens objectAtIndex:0]];
+        menuIsOpen = NO;
     }
     return self;
 }
@@ -39,8 +41,13 @@
         // does it respond when triggered?
         if ([self.delegate respondsToSelector:@selector(openCloseTriggered:)]) {
             // ok then, do something.
+            if (menuIsOpen == YES) {
+                menuIsOpen = NO;
+            } else {
+                menuIsOpen = YES;
+            }
             // The main view, ViewController.nib, is receiving this.
-            [self.delegate openCloseTriggered:YES];
+            [self.delegate openCloseTriggered:menuIsOpen];
         }
     }
 }
